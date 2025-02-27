@@ -10,21 +10,21 @@ case "$DPKG_MAINTSCRIPT_ARCH" in
 ### CHANGE SHA256SUMs FOR EACH NEW VER ###
     i386)  ARCH="32"
            MULTIARCH="i386-linux-gnu"
-           SHA256SUM="896691fbd860275d099b015635bd48dfd9e7564e69b795b9b218ae54bd2033e8"
+           SHA256SUM="a4e94c3f40d8a6d4711ca37b3948a2d0b273caa0eaaeed5ddc80c3a6279ecd35"
     ;;
     amd64) ARCH="64"
            MULTIARCH="x86_64-linux-gnu"
-           SHA256SUM="114b9cf8903351ead2b041a11b3012668312180f281cf27bfac7e20c05a721fc"
+           SHA256SUM="27ab53323c110b76214c1c72222f459d17febbcd1e252136cadc292b0308d75b"
     ;;
     armhf) ARCH="-arm"
            MULTIARCH="arm-linux-gnueabihf"
-           SHA256SUM="82c56f8eb4f824c7f034cc72bba1805ee832613f98634209d9c4847d68de9e4f"
+           SHA256SUM="9957005b7faa278f3761f61cd58cdb2062c719a1ed94cb079b97f04b0c2ed6e9"
     ;;
     *)     ARCH="-$DPKG_MAINTSCRIPT_ARCH"
            MULTIARCH="aarch64-linux-gnu"
-           SHA256SUM="3ccdd1afb0dde82ca79b56cafe546a5f2c688c00f23f4838e49f4159af2a93d8"
+           SHA256SUM="a78aea7970150f46bcd3bb7994c9e6dd90bd7a9ea785920f5a73f6964e3fcda7"
 esac
-URL="http://ciscobinary.openh264.org/libopenh264-${VER}-linux${ARCH}.7.so.bz2"
+URL="http://ciscobinary.openh264.org/libopenh264-${VER}-linux${ARCH}.8.so.bz2"
 
 download_verify_extract()
 {
@@ -45,6 +45,7 @@ if ! echo "$SHA256SUM  $TMPFL" | sha256sum -c ; then
     exit 1
 fi
 
+# libopenh264.so.8 is backwards-compaible to libopenh264.so.7 (no conflicting symbols)
 if ! bzcat $TMPFL > /usr/lib/$MULTIARCH/libopenh264.so.7 ; then
     echo "$0: Error on unpacking." >&2
     exit 1

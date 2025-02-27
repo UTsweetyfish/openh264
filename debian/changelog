@@ -1,3 +1,11 @@
+openh264 (2.3.1+dfsg-4deepin1) unstable; urgency=medium
+
+  [ Bastian Germann ]
+  * Let libopenh264-cisco7 install version 2.6.0
+  * Backport CVE-2025-27091 fix (Closes: #1098470)
+
+ -- Tianyu Chen <sweetyfish@deepin.org>  Thu, 27 Feb 2025 20:30:18 +0800
+
 openh264 (2.3.1+dfsg-4) unstable; urgency=medium
 
   * Move to Multimedia Maintainers
